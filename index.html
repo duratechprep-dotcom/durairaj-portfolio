@@ -4,399 +4,793 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Durairaj S — Senior Software Test Engineer portfolio. Manual, automation, API, mobile and performance testing.">
     <title>Durairaj S | QA Engineer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --bg: #f7f8fc;
+            --surface: #fff;
+            --ink: #172033;
+            --muted: #667085;
+            --line: #e7eaf1;
+            --primary: #5b55d9;
+            --primary-soft: #efeeff;
+            --teal: #12a899;
+            --shadow: 0 12px 35px rgba(27, 39, 70, .07);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth
         }
 
         body {
-            background: #07111f;
-            color: #fff;
-            line-height: 1.6
+            font-family: "DM Sans", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65
         }
 
-        body:before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(0, 255, 200, .08), transparent 30%), radial-gradient(circle at bottom right, rgba(100, 100, 255, .08), transparent 30%);
-            z-index: -1
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            width: min(1120px, 90%);
+            margin: auto
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line)
         }
 
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+            min-height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 18px 7%;
-            background: rgba(5, 10, 20, .88);
-            backdrop-filter: blur(14px);
-            z-index: 1000
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #1ef2c8
-        }
-
-        .menu {
-            display: flex;
-            gap: 22px;
-            list-style: none
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600
-        }
-
-        .menu a:hover {
-            color: #1ef2c8
-        }
-
-        .hero,
-        .section {
-            padding: 110px 7% 70px
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1.4fr .9fr;
-            gap: 28px;
-            min-height: 100vh;
-            align-items: center
-        }
-
-        .card {
-            background: rgba(255, 255, 255, .04);
-            border: 1px solid rgba(255, 255, 255, .08);
-            border-radius: 24px;
-            padding: 32px;
-            backdrop-filter: blur(12px)
-        }
-
-        h1 {
-            font-size: 60px
-        }
-
-        .subtitle {
-            font-size: 26px;
-            color: #d4d4d4;
-            margin: 14px 0
-        }
-
-        .desc {
-            color: #c4c4c4;
-            font-size: 17px
-        }
-
-        .accent {
-            color: #1ef2c8
-        }
-
-        .project-color {
-            color: #8ab4ff;
-            font-weight: 700
-        }
-
-        .badge,
-        .tag,
-        .btn {
-            display: inline-block;
-            border-radius: 999px
-        }
-
-        .badge {
-            padding: 20px 18px;
-            background: rgba(30, 242, 200, .12);
-            border: 1px solid rgba(30, 242, 200, .2);
-            color: #1ef2c8;
-            margin-bottom: 20px
-        }
-
-        .btn {
-            padding: 14px 24px;
-            background: #1ef2c8;
-            color: #04131a;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 24px
-        }
-
-        .photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(30, 242, 200, .35);
-            margin-bottom: 20px
-        }
-
-        .stats {
-            display: grid;
-            gap: 18px
-        }
-
-        .stat h3 {
-            font-size: 42px;
-            color: #1ef2c8
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px
-        }
-
-        .tag {
-            padding: 10px 14px;
-            background: rgba(30, 242, 200, .08);
-            border: 1px solid rgba(30, 242, 200, .15);
-            color: #1ef2c8
-        }
-
-        .timeline,
-        .projects {
-            display: grid;
+            justify-content: space-between;
             gap: 22px
         }
 
-        .date {
-            float: right;
-            color: #1ef2c8
+        .brand {
+            font: 800 22px Manrope, sans-serif;
+            letter-spacing: -.8px
+        }
+
+        .brand span {
+            color: var(--primary)
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            flex-wrap: wrap
+        }
+
+        .navlinks a {
+            font-size: 14px;
+            font-weight: 700;
+            color: #596174
+        }
+
+        .navlinks a:hover {
+            color: var(--primary)
+        }
+
+        .hero {
+            padding: 76px 0 58px;
+            display: grid;
+            grid-template-columns: 1.45fr .7fr;
+            gap: 42px;
+            align-items: center
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 30px;
+            background: #e9faf6;
+            color: #087e70;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 20px
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Manrope, sans-serif;
+            letter-spacing: -.7px
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.12;
+            margin-bottom: 12px
+        }
+
+        .role {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px
+        }
+
+        .intro {
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 16px
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            border: 1px solid var(--primary);
+            background: var(--primary);
+            color: #fff;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px #5b55d933
+        }
+
+        .btn.secondary {
+            background: #fff;
+            color: var(--primary)
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: var(--shadow)
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary-soft);
+            margin-bottom: 12px
+        }
+
+        .profile-card h3 {
+            font-size: 18px
+        }
+
+        .profile-card p {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 15px;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800
+        }
+
+        section {
+            padding: 48px 0;
+            scroll-margin-top: 80px
+        }
+
+        .section-head {
+            margin-bottom: 24px
+        }
+
+        .kicker {
+            font-size: 11px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 800
+        }
+
+        h2 {
+            font-size: 29px;
+            margin-top: 4px
+        }
+
+        .section-desc {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 5px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            padding: 21px;
+            box-shadow: var(--shadow)
+        }
+
+        .panel h3 {
+            font-size: 17px;
+            margin-bottom: 11px
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .chip {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 7px;
+            background: #f1f2ff;
+            color: #4f49c4;
+            border: 1px solid #e5e4ff
+        }
+
+        .timeline {
+            display: grid;
+            gap: 15px
+        }
+
+        .job {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 24px
+        }
+
+        .job-date {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--primary)
+        }
+
+        .job h3 {
+            font-size: 18px;
+            margin-bottom: 3px
+        }
+
+        .company {
+            font-size: 14px;
+            color: var(--teal);
+            font-weight: 800;
+            margin-bottom: 9px
+        }
+
+        .job ul,
+        .project ul {
+            padding-left: 19px;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .job li,
+        .project li {
+            margin: 5px 0
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 9px
+        }
+
+        .project-no {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 5px 9px;
+            border-radius: 20px
+        }
+
+        .project-type {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: .7px
+        }
+
+        .project p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 12px
         }
 
         details {
-            margin-top: 16px;
-            background: rgba(255, 255, 255, .03);
-            padding: 16px;
-            border-radius: 14px
+            margin-top: auto;
+            padding-top: 12px
         }
 
         summary {
             cursor: pointer;
-            font-weight: 700;
-            color: #8ab4ff;
-            font-size: 18px
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800
         }
 
-        li {
-            margin: 8px 0;
-            color: #d0d0d0
+        details ul {
+            margin-top: 10px
         }
 
-        .contact p {
-            margin: 10px 0;
-            color: #d8d8d8
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px
+        }
+
+        .highlight {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            padding: 18px;
+            text-align: center
+        }
+
+        .highlight strong {
+            display: block;
+            font: 800 24px Manrope;
+            color: var(--primary)
+        }
+
+        .highlight span {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: #211d58;
+            color: #fff;
+            border-radius: 20px;
+            padding: 30px
+        }
+
+        .contact-box p {
+            color: #d8d6ff;
+            font-size: 14px
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .contact-links a {
+            background: #fff;
+            color: #39338e;
+            border-radius: 9px;
+            padding: 9px 13px;
+            font-size: 13px;
+            font-weight: 800
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            color: #8e8e8e
+            padding: 28px 0;
+            color: #8a91a3;
+            font-size: 12px
         }
 
-        @media(max-width:900px) {
+        @media(max-width:850px) {
             .hero {
+                grid-template-columns: 1fr .65fr
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .highlights {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:650px) {
+            nav {
+                padding: 13px 0;
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .navlinks {
+                gap: 13px
+            }
+
+            .navlinks a {
+                font-size: 12px
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 48px
+            }
+
+            .profile-card {
+                max-width: 340px
+            }
+
+            .job {
+                grid-template-columns: 1fr;
+                gap: 5px
+            }
+
+            .grid {
                 grid-template-columns: 1fr
             }
 
-            h1 {
-                font-size: 42px
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 14px
-            }
-
-            .menu {
-                flex-wrap: wrap;
-                justify-content: center
+            .contact-box {
+                padding: 23px
             }
         }
     </style>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">Durairaj S</div>
-        <ul class="menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section class="hero" id="about">
-        <div class="card">
-            <img src="photo.jpeg" alt="Durairaj" class="photo">
-            <div class="badge">Available for QA Opportunities</div>
-            <h1>Durairaj S</h1>
-            <div class="subtitle">Automation QA Engineer</div>
-            <p class="desc">QA Engineer with 4+ years of experience in Manual, Automation, API, Performance, Web and
-                Mobile Testing across Healthcare, Mortgage Finance, Logistics, Business Intelligence, and E-commerce
-                domains.</p>
-            <a class="btn" href="Durairaj_Automation_QA_Resume.pdf" download>Download Resume</a>
-        </div>
-        <div class="card stats">
-            <div class="stat">
-                <h3>4+</h3>
-                <p>Years Experience</p>
-            </div>
-            <div class="stat">
-                <h3>5</h3>
-                <p>Projects</p>
-            </div>
-            <div class="stat">
-                <h3>25+</h3>
-                <p>Skills</p>
-            </div>
-            <div class="stat">
-                <h3>Web + Mobile</h3>
-            </div>
-        </div>
-    </section>
-    <section class="section" id="experience">
-        <h2>Experience</h2>
-        <div class="timeline">
-            <div class="card">
-                <h3>Software Test Engineer <span class="date">Jan 2025 - Present</span></h3>
-                <p><strong>Company:</strong> <span class="accent">Piquota Digital Solutions</span></p>
-                <p><strong>Projects:</strong> <span class="project-color">Mr. Cooper, ImmunoTrack, Traxxia</span></p>
-            </div>
-            <div class="card">
-                <h3>Software Test Engineer <span class="date">Jul 2024 - Jan 2025</span></h3>
-                <p><strong>Company:</strong> <span class="accent">SenseApp</span></p>
-                <p><strong>Projects:</strong> <span class="project-color">Gogglesoc</span></p>
-            </div>
-            <div class="card">
-                <h3>Test Engineer <span class="date">Oct 2022 - Jul 2024</span></h3>
-                <p><strong>Company:</strong> <span class="accent">Omega Healthcare</span></p>
-                <p><strong>Projects:</strong> <span class="project-color">Jaguar</span></p>
-            </div>
-        </div>
-    </section>
-    <section class="section" id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills">
-            <div class="card">
-                <h3>Automation</h3>
-                <div class="tags"><span class="tag">Selenium</span><span class="tag">Playwright</span><span
-                        class="tag">Nightwatch.js</span><span class="tag">Appium</span><span class="tag">Cucumber</span>
+    <header>
+        <nav class="wrap">
+            <a class="brand" href="#home">Durairaj<span>.</span></a>
+            <ul class="navlinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="wrap hero" id="home">
+            <div>
+                <div class="eyebrow"><span class="dot"></span> Open to QA opportunities</div>
+                <h1>Hi, I'm Durairaj S</h1>
+                <div class="role">Senior Software Test Engineer</div>
+                <p class="intro">Software testing professional with 4 years of experience in Manual, Automation, API,
+                    and Performance Testing across Web and Mobile applications (Android &amp; iOS). Experienced with
+                    Selenium WebDriver, Playwright, Nightwatch.js, Appium, Postman, and Apache JMeter. Focused on
+                    reliable releases, clear defect reporting, and effective collaboration with development teams.</p>
+                <div class="actions">
+                    <a class="btn" href="Durairaj_Automation_QA_Resume.pdf" download>Download Resume ↓</a>
+                    <a class="btn secondary" href="#projects">Explore Projects</a>
                 </div>
             </div>
-            <div class="card">
-                <h3>API / Performance</h3>
-                <div class="tags"><span class="tag">Postman</span><span class="tag">REST API</span><span
-                        class="tag">JMeter</span></div>
-            </div>
-            <div class="card">
-                <h3>Tools</h3>
-                <div class="tags"><span class="tag">Azure DevOps</span><span class="tag">Jenkins</span><span
-                        class="tag">Docker</span><span class="tag">Rancher</span><span class="tag">BrowserStack</span>
+            <aside class="profile-card">
+                <img class="profile-img" src="photo.jpeg" alt="Durairaj S profile photo">
+                <h3>Durairaj S</h3>
+                <p>Senior Software Test Engineer</p>
+                <p>Chennai, Tamil Nadu, India</p>
+                <div class="socials">
+                    <a href="https://github.com/duratechprep-dotcom" target="_blank"
+                        rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/durai-raj-5079b9342" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </aside>
+        </div>
+
+        <section id="about">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="kicker">Profile</div>
+                    <h2>About Me</h2>
+                    <p class="section-desc">A concise overview of my testing background and approach.</p>
+                </div>
+                <div class="panel">
+                    <p class="section-desc" style="font-size:15px;margin:0">
+                        I have 4 years of experience in Manual and Automation Testing, covering functional, UI, smoke,
+                        sanity, retesting, regression, API, and performance testing. My experience includes web and
+                        mobile testing on Android and iOS, real devices, BrowserStack, and simulator environments. I
+                        work with Agile-Scrum teams through test planning, test design, execution, defect reporting, and
+                        release validation.
+                    </p>
+                </div>
+                <div class="highlights" style="margin-top:16px">
+                    <div class="highlight"><strong>4 Years</strong><span>QA Experience</span></div>
+                    <div class="highlight"><strong>Web + Mobile</strong><span>Testing Platforms</span></div>
+                    <div class="highlight"><strong>Manual + Automation</strong><span>Testing Coverage</span></div>
+                    <div class="highlight"><strong>API + JMeter</strong><span>Backend &amp; Performance</span></div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section" id="projects">
-        <h2>Projects (Click to Expand)</h2>
-        <div class="projects">
-            <div class="card">
-                <h3>Mr. Cooper</h3>
-                <details>
-                    <summary>View Full Project Details</summary>
-                    <p class="desc">Mortgage servicing platform for web and mobile applications.</p>
-                    <ul>
-                        <li>Automation testing using Playwright, Selenium, Appium.</li>
-                        <li>API validation using Postman.</li>
-                        <li>Azure DevOps CI/CD execution.</li>
-                        <li>BrowserStack device testing.</li>
-                        <li>Rancher deployment monitoring.</li>
-                    </ul>
-                </details>
+        </section>
+
+        <section id="skills">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="kicker">Capabilities</div>
+                    <h2>Skills &amp; Expertise</h2>
+                    <p class="section-desc">Tools, frameworks, and testing areas used across my projects.</p>
+                </div>
+                <div class="grid">
+                    <article class="panel">
+                        <h3>Testing Expertise</h3>
+                        <div class="skill-list">
+                            <span class="chip">Manual Testing</span><span class="chip">Automation Testing</span><span
+                                class="chip">Functional Testing</span><span class="chip">UI Testing</span><span
+                                class="chip">Regression</span><span class="chip">Smoke &amp; Sanity</span><span
+                                class="chip">Retesting</span><span class="chip">End-to-End</span><span
+                                class="chip">Mobile Testing</span>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <h3>Automation Tools</h3>
+                        <div class="skill-list">
+                            <span class="chip">Selenium WebDriver</span><span class="chip">Playwright</span><span
+                                class="chip">Nightwatch.js</span><span class="chip">Appium</span>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <h3>Frameworks &amp; Languages</h3>
+                        <div class="skill-list">
+                            <span class="chip">Java</span><span class="chip">JavaScript</span><span
+                                class="chip">POM</span><span class="chip">TestNG</span><span
+                                class="chip">JUnit</span><span class="chip">Cucumber BDD</span><span
+                                class="chip">Data-Driven Testing</span>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <h3>API &amp; Performance</h3>
+                        <div class="skill-list">
+                            <span class="chip">Postman</span><span class="chip">REST APIs</span><span class="chip">JSON
+                                Validation</span><span class="chip">Apache JMeter</span><span class="chip">Load
+                                Testing</span>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <h3>CI/CD &amp; DevOps</h3>
+                        <div class="skill-list">
+                            <span class="chip">Azure DevOps</span><span class="chip">Jenkins</span><span
+                                class="chip">Docker</span><span class="chip">Rancher</span><span
+                                class="chip">Gradle</span><span class="chip">Git</span>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <h3>Tools &amp; Platforms</h3>
+                        <div class="skill-list">
+                            <span class="chip">Jira</span><span class="chip">BrowserStack</span><span
+                                class="chip">IntelliJ IDEA</span><span class="chip">Android Studio</span><span
+                                class="chip">Xcode</span><span class="chip">Postman</span>
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div class="card">
-                <h3>ImmunoTrack</h3>
-                <details>
-                    <summary>View Full Project Details</summary>
-                    <ul>
-                        <li>Healthcare workflow validation.</li>
-                        <li>Manual + automation testing.</li>
-                        <li>API testing using Postman.</li>
-                        <li>Performance testing using Apache JMeter.</li>
-                        <li>Regression and release validation.</li>
-                    </ul>
-                </details>
+        </section>
+
+        <section id="experience">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="kicker">Career</div>
+                    <h2>Professional Experience</h2>
+                </div>
+                <div class="timeline">
+                    <article class="panel job">
+                        <div class="job-date">Jan 2025 – Present</div>
+                        <div>
+                            <h3>Software Test Engineer</h3>
+                            <div class="company">Piquota Digital Inc.</div>
+                            <ul>
+                                <li>Perform manual and automation testing across web and mobile application workflows.
+                                </li>
+                                <li>Design and execute functional, regression, API, and performance test scenarios.</li>
+                                <li>Develop and maintain automation using Playwright, Selenium WebDriver, and Appium.
+                                </li>
+                                <li>Validate REST APIs using Postman and execute load tests using Apache JMeter.</li>
+                                <li>Work with Azure DevOps, Jenkins, Docker, and Rancher in CI/CD and test execution
+                                    workflows.</li>
+                                <li>Collaborate with developers and product teams to report defects, verify fixes, and
+                                    support releases.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="panel job">
+                        <div class="job-date">Oct 2022 – Jul 2024</div>
+                        <div>
+                            <h3>Test Engineer</h3>
+                            <div class="company">Omega Healthcare</div>
+                            <ul>
+                                <li>Tested Jaguar healthcare denial management and billing management workflows.</li>
+                                <li>Prepared and executed manual and automation test cases based on requirements.</li>
+                                <li>Performed functional, UI, regression, smoke, sanity, and retesting activities.</li>
+                                <li>Developed automation scripts using Selenium WebDriver with Java and relevant
+                                    frameworks.</li>
+                                <li>Reported defects, retested fixes, and supported quality validation.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div class="card">
-                <h3>Traxxia</h3>
-                <details>
-                    <summary>View Full Project Details</summary>
-                    <ul>
-                        <li>Business intelligence analytics testing.</li>
-                        <li>Dashboard validation.</li>
-                        <li>Playwright and Nightwatch automation.</li>
-                        <li>Load testing.</li>
-                    </ul>
-                </details>
+        </section>
+
+        <section id="projects">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="kicker">Selected Work</div>
+                    <h2>Projects</h2>
+                    <p class="section-desc">Project summaries and QA responsibilities from my testing experience.</p>
+                </div>
+                <div class="grid">
+                    <article class="panel project">
+                        <div class="project-top"><span class="project-no">01</span><span
+                                class="project-type">Healthcare</span></div>
+                        <h3>Jaguar – Healthcare</h3>
+                        <p>Denial Management and Billing Management application supporting healthcare claim processing
+                            and billing workflows.</p>
+                        <details>
+                            <summary>View QA responsibilities</summary>
+                            <ul>
+                                <li>Analyzed user stories, requirements, and acceptance criteria to prepare test
+                                    scenarios.</li>
+                                <li>Performed functional, UI, regression, smoke, sanity, and end-to-end testing.</li>
+                                <li>Created Selenium WebDriver automation using Java and Page Object Model.</li>
+                                <li>Used Cucumber BDD and validated healthcare claim-processing workflows.</li>
+                                <li>Tracked defects and verified fixes with the team.</li>
+                            </ul>
+                        </details>
+                    </article>
+
+                    <article class="panel project">
+                        <div class="project-top"><span class="project-no">02</span><span class="project-type">Pet
+                                Healthcare</span></div>
+                        <h3>Zosalus</h3>
+                        <p>Pet healthcare application for managing pet profiles, veterinary documents, medications,
+                            allergies, and health records.</p>
+                        <details>
+                            <summary>View QA responsibilities</summary>
+                            <ul>
+                                <li>Tested pet profiles, health records, and veterinary document workflows.</li>
+                                <li>Validated document upload, categorization, pet assignment, and OCR
+                                    extraction/review.</li>
+                                <li>Tested email-based document ingestion.</li>
+                                <li>Validated medication details, dosage, frequency, schedules, and allergy information.
+                                </li>
+                                <li>Tested iOS Share Extension and Android Share Intent flows.</li>
+                                <li>Performed API testing using Postman and regression testing after fixes.</li>
+                            </ul>
+                        </details>
+                    </article>
+
+                    <article class="panel project">
+                        <div class="project-top"><span class="project-no">03</span><span class="project-type">Mortgage
+                                Finance</span></div>
+                        <h3>Mr. Cooper</h3>
+                        <p>Mortgage servicing platform supporting customer loan servicing workflows across web and
+                            mobile applications.</p>
+                        <details>
+                            <summary>View QA responsibilities</summary>
+                            <ul>
+                                <li>Performed web and mobile testing for mortgage servicing workflows.</li>
+                                <li>Developed and executed automation using Playwright, Selenium, and Appium.</li>
+                                <li>Used Page Object Model to organize reusable automation components.</li>
+                                <li>Validated APIs using Postman and executed tests through CI/CD workflows.</li>
+                                <li>Performed device/browser validation using BrowserStack.</li>
+                            </ul>
+                        </details>
+                    </article>
+
+                    <article class="panel project">
+                        <div class="project-top"><span class="project-no">04</span><span
+                                class="project-type">Healthcare</span></div>
+                        <h3>ImmunoTrack</h3>
+                        <p>Healthcare immunization workflow application for patient records, clinical information, and
+                            medication-related workflows.</p>
+                        <details>
+                            <summary>View QA responsibilities</summary>
+                            <ul>
+                                <li>Tested patient and clinician workflows, health records, and clinical data.</li>
+                                <li>Validated medication schedules, reminders, and frequency rules.</li>
+                                <li>Tested audit trail, decision log, notifications, and role-based access.</li>
+                                <li>Performed API testing using Postman and load testing using Apache JMeter.</li>
+                                <li>Documented defects and completed regression and release validation.</li>
+                            </ul>
+                        </details>
+                    </article>
+
+                    <article class="panel project">
+                        <div class="project-top"><span class="project-no">05</span><span class="project-type">Business
+                                Intelligence</span></div>
+                        <h3>Traxxia</h3>
+                        <p>Business intelligence platform with a Product-Market-Fit executive summary dashboard and
+                            strategic document analysis workflows.</p>
+                        <details>
+                            <summary>View QA responsibilities</summary>
+                            <ul>
+                                <li>Tested dashboard UI, filters, reports, and executive summary workflows.</li>
+                                <li>Validated strategic document upload and analysis workflows.</li>
+                                <li>Performed automation testing using Playwright and Nightwatch.js.</li>
+                                <li>Validated API responses and backend integration.</li>
+                                <li>Reported UI, localization, and functional defects and retested fixes.</li>
+                            </ul>
+                        </details>
+                    </article>
+                </div>
             </div>
-            <div class="card">
-                <h3>Gogglesoc</h3>
-                <details>
-                    <summary>View Full Project Details</summary>
-                    <ul>
-                        <li>E-commerce workflow testing.</li>
-                        <li>Checkout, payment, cart validation.</li>
-                        <li>Selenium automation framework.</li>
-                        <li>Data-driven testing.</li>
-                    </ul>
-                </details>
+        </section>
+
+        <section id="contact">
+            <div class="wrap">
+                <div class="contact-box">
+                    <div>
+                        <div class="kicker" style="color:#aaa5ff">Get in touch</div>
+                        <h2 style="margin:5px 0 8px">Let's Connect</h2>
+                        <p>Open to Software Testing and QA Automation opportunities.</p>
+                        <p style="margin-top:10px">durairajsubbramaniyan@gmail.com · 8778498057 / 7603861074</p>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:durairajsubbramaniyan@gmail.com">Email</a>
+                        <a href="https://github.com/duratechprep-dotcom" target="_blank"
+                            rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/durai-raj-5079b9342" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Jaguar</h3>
-                <details>
-                    <summary>View Full Project Details</summary>
-                    <ul>
-                        <li>Healthcare billing and denial management.</li>
-                        <li>Selenium + Java + Cucumber automation.</li>
-                        <li>API validation and Jira defect tracking.</li>
-                    </ul>
-                </details>
-            </div>
-        </div>
-    </section>
-    <section class="section contact" id="contact">
-        <h2>Contact</h2>
-        <p>📧 durairajsubbramaniyan@gmail.com</p>
-        <p>📱 8778498057</p>
-        <p>💻 GitHub: <a href="https://github.com/duratechprep-dotcom"
-                target="_blank">github.com/duratechprep-dotcom</a></p>
-        <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/durai-raj-5079b9342"
-                target="_blank">linkedin.com/in/durai-raj-5079b9342</a>
-        </p>
-        <p>📄 Naukri: <a href="https://www.naukri.com/mnjuser/profile?id=&altresid"
-                target="_blank">naukri.com/myAccount</a></p>
-    </section>
-    <footer>© 2026 Durairaj S | QA Portfolio</footer>
+        </section>
+    </main>
+    <footer>© 2026 Durairaj S · Software Testing Portfolio</footer>
 </body>
 
 </html>
